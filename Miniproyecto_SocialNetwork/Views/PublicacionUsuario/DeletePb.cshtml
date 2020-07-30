@@ -1,0 +1,51 @@
+﻿@model ViewModels.PublicacionEditViewModels
+@{
+    ViewData["Title"] = "Eliminar Publicacion";
+    ViewData["banner"] = "Eliminar Publicacion";
+    ViewData["controller"] = "PublicacionUsuario";
+    ViewData["action"] = "Home";
+    Layout = "~/Views/Shared/_LayoutRegistro.cshtml";
+}
+
+    <body style="background: #73C8A9; /* fallback for old browsers */ background: -webkit-linear-gradient(to right, #373B44, #73C8A9); /* Chrome 10-25, Safari 5.1-6 */ background: linear-gradient(to right, #373B44, #73C8A9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ ">
+
+        <div class="container rounded mx-auto" style="margin-top:80px; width:48rem;">
+
+            <div class="card mt-2 mx-auto shadow-lg p-1 rounded" style="margin-top:2px; width: 48rem;">
+
+                <div class="card-header bg-light">
+                    <div class="d-flex justify-content-start d-flex align-items-start p-0">
+                        <div class="bd-highlight rounded text-center bg-danger text-white" id="bod-publicar" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"><h3>¿ESTAS SEGURO QUE QUIERES ELIMINAR ESTE PUBLICACIÓN? </h3></div>
+
+                    </div>
+                </div>
+                <img src="~/images/fotoPublicacion/@Model.FotoPublicacion" asp-append-version="true" class="card-img-top mx-auto" height="480">
+
+
+                <div class="card-body">
+                    <h5 class="card-title text-black-50 font-weight-bolder font-italic">@Model.Titulo</h5>
+                    <div class="media">
+                        <img src="~/images/fotoPerfil/@Model.FotoPerfil" class="mr-3 mt-1 rounded-pill" width="40" height="40">
+                        <div class="media-body">
+                            <h5 class="mt-0">@Model.Nombre @Model.Apellido</h5>
+                            <p class="text-info text-justify">
+                                @Model.Cuerpo
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="card-footer bg-transparent border-info align-items-center">
+                    <form asp-action="DeletePb" asp-controller="PublicacionUsuario" enctype="multipart/form-data" method="post">
+                        <input name="IdPublicacion" value="@Model.IdPublicacion" type="hidden" />
+                        <button type="submit" class="btn btn-outline-danger btn-block">Eliminar</button>
+                    </form>
+                </div>
+
+            </div>
+
+                    </div>
+
+    </body>

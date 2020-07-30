@@ -52,8 +52,12 @@ namespace Repository.Repository
                 if (FilePath != null)
                 {
 
-                    pb.FotoIformfilePublicacion.CopyTo(new FileStream(FilePath, FileMode.Create));
-
+                    var stream = new FileStream(FilePath, FileMode.Create);
+                    pb.FotoIformfilePublicacion.CopyTo(stream);
+                    stream.Flush();
+                    stream.Close();
+                  
+                  
                 }
 
 
@@ -134,6 +138,144 @@ namespace Repository.Repository
 
             return listado;
         }
+
+
+        public async Task<PublicacionEditViewModels> GetPublicacionEdit(int id) {
+
+            var publicacion = await GetByIdAsync(id);
+
+            var pvm = new PublicacionEditViewModels();
+
+            var usuario = await _tablaUsuarioRepository.GetByIdAsync(publicacion.IdUsuario);
+            pvm= _mapper.Map<PublicacionEditViewModels>(publicacion);
+            pvm.FotoPerfil = usuario.FotoPerfil;
+            pvm.Nombre = usuario.Nombre;
+            pvm.Apellido = usuario.Apellido;
+
+
+            return pvm;
+        }
+
+        public async Task<bool> PostPublicacionEdit(PublicacionEditViewModels pb, int id)
+        {
+            if (pb == null) {
+
+                return false;
+            }
+
+            var publicacionVieja = await GetByIdAsync(id);
+            try
+            {
+                string uniqueName = null;
+
+            if (pb.FotoIFormFilePublicacion != null)
+            {
+
+                var FolderPath = Path.Combine(hostingEnvironment.WebRootPath, "images/fotoPublicacion");
+
+                uniqueName = Guid.NewGuid().ToString() + "name" + pb.FotoIFormFilePublicacion.FileName;
+
+                var FilePath = Path.Combine(FolderPath, uniqueName);
+
+
+
+                if (!string.IsNullOrEmpty(publicacionVieja.FotoPublicacion))
+                {
+
+                    var FilePathDelete = Path.Combine(FolderPath, publicacionVieja.FotoPublicacion);
+
+                    if (System.IO.File.Exists(FilePathDelete))
+                    {
+
+                        var FileInfo = new System.IO.FileInfo(FilePathDelete);
+                        FileInfo.Delete();
+
+                    }
+
+                }
+
+                if (FilePath != null)
+                {
+
+                    var stream = new FileStream(FilePath, FileMode.Create);
+                    pb.FotoIFormFilePublicacion.CopyTo(stream);
+                    stream.Flush();
+                    stream.Close();
+
+                }
+
+
+                publicacionVieja.Cuerpo = pb.Cuerpo;
+                publicacionVieja.Titulo = pb.Titulo;
+                publicacionVieja.Fecha = DateTime.Now;
+               publicacionVieja.FotoPublicacion = uniqueName;
+                await Update(publicacionVieja);
+
+
+                return true;
+
+            }
+            else {
+
+
+                publicacionVieja.Cuerpo = pb.Cuerpo;
+                publicacionVieja.Titulo = pb.Titulo;
+                publicacionVieja.Fecha = DateTime.Now;
+                await Update(publicacionVieja);
+
+
+                return true;
+
+
+
+            }
+
+
+        }
+            catch
+            {
+
+                return false;
+            }
+
+
+            }
+
+
+        public async Task<bool> EliminarPublicacionAll(int IdPublicacion) {
+
+
+            if (IdPublicacion != null)
+            {
+                var ListadocomentarioPublicacion = await _context.TablaComentarios.Where(op => op.IdPublicacion == IdPublicacion).ToListAsync();
+
+
+                foreach (var coment in ListadocomentarioPublicacion)
+                {
+
+                    var ListadoSubcomentario = await _context.SubTablaComentarios.Where(x => x.IdComentario == coment.IdComentario).ToListAsync();
+
+                    foreach (var Subcoment in ListadoSubcomentario)
+                    {
+                        await _subTablaComentarioRepository.DeleteEntity(Subcoment);
+                    }
+
+                    await _tablaComentarioRepository.DeleteEntity(coment);
+
+                }
+
+                var PublicacionABorrar = await GetByIdAsync(IdPublicacion);
+
+                await DeleteEntity(PublicacionABorrar);
+
+
+                return true;
+            }
+
+            return false;
+
+        }
+
 
 
 

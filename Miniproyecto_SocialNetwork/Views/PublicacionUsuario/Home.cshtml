@@ -59,8 +59,8 @@
 
                     <div class="card-header bg-light">
                         <div class="d-flex justify-content-end d-flex align-items-start p-0">
-                            <a asp-controller="Edicion" asp-action="EditPublic" asp-route-id="" class="btn btn-warning  btn-group-sm p-1">Editar</a>
-                            <a asp-controller="Edicion" asp-action="DeletePublic" asp-route-id="" class="btn btn-danger btn-group-sm p-1" style="margin-left:10px;">Eliminar</a>
+                            <a asp-controller="PublicacionUsuario" asp-action="EditPb" asp-route-id="@mypublicaciones.IdPublicacion" class="btn btn-warning  btn-group-sm p-1">Editar</a>
+                            <a asp-controller="PublicacionUsuario" asp-action="DeletePb" asp-route-id="@mypublicaciones.IdPublicacion" class="btn btn-danger btn-group-sm p-1" style="margin-left:10px;">Eliminar</a>
                         </div>
 
                     </div>
@@ -110,7 +110,6 @@
                                                 {
 
                                                     if (comentariosPublicacion.IdComentario == subComentarioMyUser.IdComentario)
-
                                                     {
 
                                                         <div class="media mt-3">

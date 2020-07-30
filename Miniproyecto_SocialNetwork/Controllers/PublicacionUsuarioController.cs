@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -151,6 +152,105 @@ namespace Miniproyecto_SocialNetwork.Controllers
                 ViewBag.Comentare = "No puedes enviar respuestas vacios...";
                 return RedirectToAction("Home", "PublicacionUsuario");
             }
+
+        }
+
+        ///// Ediccion de las publicaciones
+        public async Task<IActionResult> EditPb(int? id) {
+
+            if (id.Value == null)
+            {
+                return NotFound();
+            }
+
+            var publicacion = await _tablaPublicacionRepository.GetPublicacionEdit(id.Value);
+
+            if (publicacion == null)
+            {
+                return NotFound();
+            }
+
+
+            return View(publicacion);
+
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditPb(int? Id, PublicacionEditViewModels pvm)
+        {
+
+            if (ModelState.IsValid) {
+
+
+                try
+                {
+
+                    var postPublicacion = await _tablaPublicacionRepository.PostPublicacionEdit(pvm, Id.Value);
+
+                                if (postPublicacion) {
+                            return RedirectToAction("Home");
+                        }
+                        
+                        ModelState.AddModelError("", "A ocurrido un problema interno en la base de datos.");
+                        return View(pvm);
+
+            }
+
+                    catch
+            {
+                return BadRequest();
+
+            }
+
+        }
+
+            return View(pvm);
+        }
+
+
+        public async Task<IActionResult> DeletePb(int? id) {
+
+            if (id.Value == null)
+            {
+                return NotFound();
+            }
+
+            var publicacion = await _tablaPublicacionRepository.GetPublicacionEdit(id.Value);
+
+            if (publicacion == null)
+            {
+                return NotFound();
+            }
+
+
+            return View(publicacion);
+
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeletePb(int IdPublicacion)
+        {
+
+            if (IdPublicacion == null)
+            {
+                return NotFound();
+            }
+
+
+            var publicacion = await _tablaPublicacionRepository.EliminarPublicacionAll(IdPublicacion);
+
+            if (publicacion) {
+                return RedirectToAction("Home");
+            }
+
+
+            return NotFound();
+
+
+
+
 
         }
 

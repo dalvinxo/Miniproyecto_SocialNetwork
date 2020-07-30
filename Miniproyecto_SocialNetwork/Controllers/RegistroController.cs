@@ -68,9 +68,10 @@ namespace Miniproyecto_SocialNetwork.Controllers
                     var FilePath = Path.Combine(FolderPath, uniqueName);
 
                     if (FilePath != null) {
-
-                        NewUser.FotoProfile.CopyTo(new FileStream(FilePath, FileMode.Create));
-                    
+                        var stream = new FileStream(FilePath, FileMode.Create);
+                        NewUser.FotoProfile.CopyTo(stream);
+                        stream.Flush();
+                        stream.Close();
                     }
 
 
