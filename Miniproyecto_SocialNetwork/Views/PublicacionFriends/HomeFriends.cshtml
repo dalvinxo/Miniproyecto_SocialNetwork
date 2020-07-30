@@ -1,0 +1,191 @@
+﻿@model ViewModels.PublicacionesFriendsViewModels
+@{
+    ViewData["Title"] = "💘Friends!";
+    Layout = "~/Views/Shared/_LayoutPublicacion.cshtml";
+    ViewData["nt"] = Model.UsuarioLogueado.NombreUsuario;
+    ViewData["activadorHome"] = "";
+    ViewData["activadorFriends"] = "active";
+    ViewData["perfil"] = Model.UsuarioLogueado.FotoPerfil;
+}
+    <body id="login-body" style="background: #373B44; /* fallback for old browsers */ background: -webkit-linear-gradient(to right, #4286f4, #373B44); /* Chrome 10-25, Safari 5.1-6 */ background: linear-gradient(to right, #4286f4, #373B44); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ ">
+        @*Contenido*@
+        <div class="container mx-auto cuerpo-home bg-light border border-white rounded shadow-sm rounded" style="width: 52rem;">
+
+            @*Pruebas*@
+            <div class="card text-center">
+                <div class="card-header">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link active"><span style="color:#112986; font-size:18px;"><strong>Lista de Amigos</strong></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="PublicacionFriends" style="margin-top:5px;" class="btn btn-success" asp-action="AddFriends" asp-route-id="@Model.UsuarioLogueado.IdUsuario">Agregar</a>                     
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body" style="overflow-y: scroll; height:290px; padding:10px;">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">Usuario</th>
+                                <th scope="col">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var Us in Model.ListaAmigosPlantilla)
+                            {
+                            <tr>
+                                <td>@Us.Nombre</td>
+                                <td>@Us.Apellido</td>
+                                <td>@Us.NombreUsuario</td>
+                                <td>
+                                    <form asp-action="EliminarAmigo" method="post" class="needs-validation" novalidate>
+                                        <input type="hidden" name="IdAmigo" value="@Us.IdUsuario" />
+                                        <input type="hidden" name="IdUsuario" value="@Model.UsuarioLogueado.IdUsuario"  />
+                                        <input type="submit" class="btn btn-outline-danger" value="Eliminar" />
+                                    </form>
+                                </td>
+                              
+                            </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+            <div class="table-bordered rounded mt-2 shadow-sm" style="padding:6px; margin-top:4px; margin-bottom:6px;">
+
+                @foreach (var mypublicaciones in Model.ListaPublicacionPlantilla)
+                {
+                    <div class="card mt-2 mx-auto shadow p-1 rounded" style="margin-top:2px; width: 48rem;">
+
+                        <img src="~/images/fotoPublicacion/@mypublicaciones.FotoPublicacion" asp-append-version="true" class="card-img-top mx-auto" height="600">
+
+                        <div class="card-body">
+                            <h5 class="card-title text-black-50 font-weight-bolder font-italic">@mypublicaciones.Titulo</h5>
+                            <div class="media">
+                                <img src="~/images/fotoPerfil/@mypublicaciones.FotoPerfil" class="mr-3 mt-1 rounded-pill" width="40" height="40">
+                                <div class="media-body">
+                                    <h5 class="mt-0">@mypublicaciones.Nombre @mypublicaciones.Apellido</h5>
+                                    <p class="text-info text-justify">
+                                        @mypublicaciones.Cuerpo
+                                    </p>
+                                </div>
+                            </div>
+
+                            <p class="card-text"><small class="text-muted ml-auto">@mypublicaciones.Fecha</small></p>
+
+                            @foreach (var comentariosPublicacion in Model.ListaComentarioPlantilla) { 
+
+                            if (comentariosPublicacion.IdPublicacion == mypublicaciones.IdPublicacion)
+                            {
+                                    <div class="card card-body text-dark ">
+
+                                        <div class="media">
+                                            <img src="~/images/fotoPerfil/@comentariosPublicacion.FotoPerfil" class="mr-3 mt-2 rounded-pill" width="60" height="60">
+                                            <div class="media-body text-dark h8">
+                                                <div class="card-title text-success font-weight-bold mt-0 h6">@comentariosPublicacion.Nombre @comentariosPublicacion.Apellido</div>
+                                                @comentariosPublicacion.UserComentario
+                                                <p class="card-text"><small class="text-muted small">@comentariosPublicacion.Fecha</small></p>
+
+                                                <p>
+                                                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsubcomentarios_@comentariosPublicacion.IdComentario" aria-expanded="false" aria-controls="collapseExample">
+                                                        Responder
+                                                    </button>
+
+                                                    <a class="card-link" data-toggle="collapse" href="#COmentario_@comentariosPublicacion.IdComentario" role="button" aria-expanded="false" aria-controls="COmentario_@comentariosPublicacion.IdComentario">
+                                                        Ver Respuestas
+                                                    </a>
+                                                </p>
+
+                                                <div class="collapse" id="COmentario_@comentariosPublicacion.IdComentario">
+
+                                                    @foreach (var subComentarioMyUser in Model.ListaSubComentarioPlantilla)
+                                                    {
+
+                                                        if (comentariosPublicacion.IdComentario == subComentarioMyUser.IdComentario)
+                                                        {
+
+                                                            <div class="media mt-3">
+                                                                <a class="mr-3" href="#">
+                                                                    <img src="~/images/fotoPerfil/@subComentarioMyUser.FotoPerfil" class="mr-3 mt-2 rounded-pill" width="60" height="60">
+                                                                </a>
+                                                                <div class="media-body">
+                                                                    <h6 class="mt-0 font-weight-bold">@subComentarioMyUser.Nombre @subComentarioMyUser.Apellido</h6>
+                                                                    @subComentarioMyUser.UserComentario
+                                                                    <p><small class="text-muted small">@subComentarioMyUser.Fecha</small></p>
+
+                                                                </div>
+                                                            </div>
+
+
+                                                        }
+
+
+                                                    }
+
+                                                </div>
+
+                                                <div class="collapse" id="collapsubcomentarios_@comentariosPublicacion.IdComentario">
+
+                                                    <div class="card-footer bg-transparent border-info align-items-center">
+                                                        <form asp-action="SubComentar" asp-controller="PublicacionUsuario" method="post">
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-10">
+                                                                    <input type="hidden" name="IdComentario" value="@comentariosPublicacion.IdComentario" />
+                                                                    <input name="comentar" placeholder="Escribir Comentario....." class="form-control">
+                                                                    <span class="text-danger">@ViewBag.Comentare</span>
+                                                                </div>
+                                                                <button type="submit" class="btn btn-primary col-lg-pull-9">Enviar</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                </div>
+
+
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+
+
+                                }
+                            }
+                            <div class="card-footer bg-transparent border-info align-items-center">
+                                <form asp-action="Comentarios" asp-controller="PublicacionUsuario" method="post">
+                                    <div class="form-group row">
+                                        <div class="col-sm-10">
+                                            <input type="hidden" name="idpublicacion" value="@mypublicaciones.IdPublicacion" />
+                                            <input name="comentar" placeholder="Escribir Comentario....." class="form-control">
+                                            <span class="text-danger">@ViewBag.Comenta</span>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary col-lg-pull-11">Comentar</button>
+
+                                    </div>
+                                </form>
+
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                }
+
+
+
+            </div>
+
+        </div>
+    </body>

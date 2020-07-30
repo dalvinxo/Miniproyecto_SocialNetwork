@@ -21,6 +21,9 @@ namespace Miniproyecto_SocialNetwork.Infrastructure
             MapearSubComentario();
             MapearViewSubComentarioPlantilla();
             MapearPublicacionViewModel();
+            MapearPublicacionFriendsUsuarioLogueado();
+            MapearAmigoPlantillaUsuario();
+            MapearAmigos();
 
         }
 
@@ -93,6 +96,31 @@ namespace Miniproyecto_SocialNetwork.Infrastructure
                          ;
 
 
+        }
+
+        private void MapearPublicacionFriendsUsuarioLogueado()
+        {
+            CreateMap<TablaUsuario,UsuarioLogueadoPlantilla>().ReverseMap().
+                         ForMember(dest => dest.Telefono, opt => opt.Ignore()).
+                         ForMember(dest => dest.Correo, opt => opt.Ignore()).
+                        ForMember(dest => dest.Clave, opt => opt.Ignore()).
+                          ForMember(dest => dest.Estado, opt => opt.Ignore())
+
+                ;
+        }
+
+        private void MapearAmigoPlantillaUsuario()
+        {
+            CreateMap<PlantillaAmigos, TablaUsuario>().ReverseMap()
+
+                ;
+        }
+
+        private void MapearAmigos()
+        {
+            CreateMap<AmigoViewModels, TablaAmigo>().ReverseMap()
+
+                ;
         }
 
 

@@ -89,3 +89,5 @@ C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Miniproyecto_Socia
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Miniproyecto_SocialNetwork\obj\Debug\netcoreapp3.1\Miniproyecto_SocialNetwork.genruntimeconfig.cache
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Miniproyecto_SocialNetwork\obj\Debug\netcoreapp3.1\Razor\Views\PublicacionUsuario\DeletePb.cshtml.g.cs
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Miniproyecto_SocialNetwork\obj\Debug\netcoreapp3.1\Razor\Views\PublicacionUsuario\EditPb.cshtml.g.cs
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Miniproyecto_SocialNetwork\obj\Debug\netcoreapp3.1\Razor\Views\PublicacionFriends\HomeFriends.cshtml.g.cs
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Miniproyecto_SocialNetwork\obj\Debug\netcoreapp3.1\Razor\Views\PublicacionFriends\AddFriends.cshtml.g.cs

@@ -28,10 +28,10 @@
             <div class="form-inline">
                 <ul class="nav justify-content-end nav-pills">
                     <li class="nav-item">
-                        <a class="nav-link @ViewData["activadorHome"]" asp-action="Index">Home</a>
+                        <a class="nav-link @ViewData["activadorHome"]" asp-action="Home" asp-controller="PublicacionUsuario">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-action="Friends" style="margin-right:15px;">Amigos</a>
+                        <a class="nav-link @ViewData["activadorFriends"]" asp-action="HomeFriends" asp-controller="PublicacionFriends" style="margin-right:15px;">Amigos</a>
                     </li>
                     <li class="nav-item">
                         <a asp-controller="Account" asp-action="CerrarSesion" class="nav-link btn btn-outline-danger">Cerrar Sesión</a>

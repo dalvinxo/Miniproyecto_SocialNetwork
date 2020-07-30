@@ -1,0 +1,53 @@
+﻿@model ViewModels.AgregarUsuarioViewModels
+@{
+    ViewData["Title"] = "Agregar Usuario";
+    ViewData["banner"] = "Agregar Usuario";
+    ViewData["controller"] = "PublicacionFriends";
+    ViewData["action"] = "HomeFriends";
+    Layout = "~/Views/Shared/_LayoutRegistro.cshtml";
+}
+
+<body style="background: #73C8A9; /* fallback for old browsers */ background: -webkit-linear-gradient(to right, #373B44, #73C8A9); /* Chrome 10-25, Safari 5.1-6 */ background: linear-gradient(to right, #373B44, #73C8A9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ ">
+
+    <div class="container rounded mx-auto" style="margin-top:80px; width:48rem;">
+
+        <div class="card mt-2 mx-auto shadow-lg p-1 rounded" style="margin-top:2px; width: 48rem;">
+
+            <div class="card-header bg-light">
+                <div class="d-flex justify-content-start d-flex align-items-start p-0">
+                    <div class="bd-highlight rounded text-center bg-success text-white" id="bod-publicar" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"><h3>Agregar Usuario!</h3></div>
+
+                </div>
+            </div>
+                <div class="card-body">
+                    <div class="form-row mt-1 d-flex justify-content-center">
+
+                        <div class="form-group col-6">
+
+                            <form asp-controller="PublicacionFriends" asp-action="AddFriends" method="post">
+                                <div asp-validation-summary="All" class="text-danger">
+
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="NombreUsuario"></label>
+                                    <input asp-for="NombreUsuario" class="form-control form-control-lg rounded-pill border border-dark shadow-lg p-3 text-danger  bg-white rounded text-center" placeholder="Ingresar Usuario">
+                                    <span asp-validation-for="NombreUsuario" class="text-danger"></span>
+                                </div>
+
+                                <input asp-for="UserIdUsuario" type="hidden" value="@Model.UserIdUsuario" />
+
+                                <input value="Agregar" type="submit" style="font-size:20px;" class="btn btn-outline-primary btn-block  mt-2 shadow rounded" />
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+        </div>
+     
+    </div>
+
+</body>
