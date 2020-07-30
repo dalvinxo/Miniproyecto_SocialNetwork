@@ -3,6 +3,10 @@
     ViewData["Title"] = "💘Home!";
     Layout = "~/Views/Shared/_LayoutPublicacion.cshtml";
     ViewData["nt"] = ViewBag.usuarioNombre;
+    ViewData["activadorHome"] = "active";
+    ViewData["perfil"] = ViewBag.PhotoProfile;
+
+
 }
 
 <body id="login-body" style="background: #373B44; /* fallback for old browsers */ background: -webkit-linear-gradient(to right, #4286f4, #373B44); /* Chrome 10-25, Safari 5.1-6 */ background: linear-gradient(to right, #4286f4, #373B44); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ ">
@@ -18,30 +22,30 @@
             <form asp-controller="PublicacionUsuario" asp-action="Home" method="post" enctype="multipart/form-data">
 
                 <div asp-validation-summary="All" class="text-danger"></div>
-
-                <div class="form-group">
-                        <label asp-for="FotoIformfilePublicacion" class="ml-2"></label>
-                        <input asp-for="FotoIformfilePublicacion" class="form-control" placeholder="Seleccionar foto" />
-                    <div class="row col-lg-8">
-                        <span asp-validation-for="FotoIformfilePublicacion" class="text-danger"></span>
-                    </div>
-                </div>
-
-
                 <label asp-for="Titulo"></label>
                 <div class="form-group">
-                    <input asp-for="Titulo" class="form-control" placeholder="Ingresar Titulo" required />
+                    <input asp-for="Titulo" class="form-control" placeholder="Ingresar Titulo" />
                     <span asp-validation-for="Titulo" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
                     <label asp-for="Cuerpo"></label>
-                    <textarea class="form-control is-invalid" asp-for="Cuerpo" placeholder="Escribir cuerpo de la publicacion" required></textarea>
+                    <textarea class="form-control" asp-for="Cuerpo" name="Cuerpo" placeholder="Escribir cuerpo de la publicacion"></textarea>
                     <span asp-validation-for="Cuerpo" class="text-danger"></span>
                 </div>
-                <input type="hidden" asp-for="IdUsuario" value="" />
+
+                <div class="form-group">
+                    <label asp-for="FotoIformfilePublicacion" class="ml-2"></label>
+                    <input asp-for="FotoIformfilePublicacion" class="form-control" placeholder="Seleccionar foto" />
+                    <div class="row col-lg-8">
+                        <span asp-validation-for="FotoIformfilePublicacion" class="text-danger"></span>
+                    </div>
+                </div>
+
                 <button type="submit" class="btn btn-outline-info btn-lg btn-block">Publicar</button>
+
             </form>
+
 
 
         </div>
@@ -49,130 +53,139 @@
         <div class="table-bordered rounded mt-2 shadow-sm" style="padding:6px; margin-top:4px; margin-bottom:6px;">
             <div class="bd-highlight rounded text-center" id="bod-publicar"><h3>Mi Publicaciones</h3></div>
 
-            <div class="card mt-2 mx-auto shadow p-1 rounded" style="margin-top:2px; width: 48rem;">
+            @foreach (var mypublicaciones in Model.ListaPublicacionPlantilla)
+            {
+                <div class="card mt-2 mx-auto shadow p-1 rounded" style="margin-top:2px; width: 48rem;">
 
-                <div class="card-header bg-light">
+                    <div class="card-header bg-light">
                         <div class="d-flex justify-content-end d-flex align-items-start p-0">
                             <a asp-controller="Edicion" asp-action="EditPublic" asp-route-id="" class="btn btn-warning  btn-group-sm p-1">Editar</a>
                             <a asp-controller="Edicion" asp-action="DeletePublic" asp-route-id="" class="btn btn-danger btn-group-sm p-1" style="margin-left:10px;">Eliminar</a>
                         </div>
-                   
-                </div>
 
-                <img src="~/images/fotoPerfil/hola.jpg" asp-append-version="true" class="card-img-top mx-auto" height="600">
-
-                <div class="card-body">
-
-                    <div class="media">
-                        <img src="~/images/fotoPerfil/hola.jpg" class="mr-3 mt-1 rounded-pill" width="40" height="40">
-                        <div class="media-body">
-                            <h5 class="mt-0">Tommy Garcia</h5>
-                            <p class="text-info text-justify">
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            </p>
-                        </div>
                     </div>
 
-                    <p class="card-text"><small class="text-muted ml-auto">Publicacion actualizada el: 12/12/3233</small></p>
+                    <img src="~/images/fotoPublicacion/@mypublicaciones.FotoPublicacion" asp-append-version="true" class="card-img-top mx-auto" height="600">
 
-
-                    <div class="card card-body text-dark ">
-
+                    <div class="card-body">
+                        <h5 class="card-title text-black-50 font-weight-bolder font-italic">@mypublicaciones.Titulo</h5>
                         <div class="media">
-                            <img src="~/images/fotoPerfil/hola.jpg" class="mr-3 mt-2 rounded-pill" width="60" height="60">
-                            <div class="media-body text-info">
-                                <div class="card-title text-success font-weight-bold mt-0 h6">Pablito Juan</div>
-                                Todos somos iguales independientemente de sus condiciones.
-                                <p class="card-text"><small class="text-muted small">Comentario hecho el 23/21/2000</small></p>
-
-                                <p>
-                                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsubcomentarios" aria-expanded="false" aria-controls="collapseExample">
-                                        Responder
-                                    </button>
-
-                                    <a class="card-link" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                        Ver Respuestas
-                                    </a>
+                            <img src="~/images/fotoPerfil/@mypublicaciones.FotoPerfil" class="mr-3 mt-1 rounded-pill" width="40" height="40">
+                            <div class="media-body">
+                                <h5 class="mt-0">@mypublicaciones.Nombre @mypublicaciones.Apellido</h5>
+                                <p class="text-info text-justify">
+                                    @mypublicaciones.Cuerpo
                                 </p>
+                            </div>
+                        </div>
 
-                                <div class="collapse" id="collapseExample">
-                                    <div class="media mt-3">
-                                        <a class="mr-3" href="#">
-                                            <img src="~/images/fotoPerfil/hola.jpg" class="mr-3 mt-2 rounded-pill" width="60" height="60">
-                                        </a>
-                                        <div class="media-body">
-                                            <h6 class="mt-0 font-weight-bold">SubComentarios</h6>
-                                            Pablo recoge la basura amigo mio.f Todos somos iguales independientemente de sus condiciones.
-                                        </div>
-                                    </div>
+                        <p class="card-text"><small class="text-muted ml-auto">@mypublicaciones.Fecha</small></p>
 
+                        @foreach (var comentariosPublicacion in Model.ListaComentarioPlantilla)
 
+                            if (comentariosPublicacion.IdPublicacion == mypublicaciones.IdPublicacion)
+                            {
+                                <div class="card card-body text-dark ">
 
-                                    <div class="media mt-3">
-                                        <a class="mr-3" href="#">
-                                            <img src="~/images/fotoPerfil/hola.jpg" class="mr-3 mt-2 rounded-pill" width="60" height="60">
-                                        </a>
-                                        <div class="media-body">
-                                            <h6 class="mt-0 font-weight-bold">SubComentarios</h6>
-                                            Pablo recoge la basura amigo mio.f Todos somos iguales independientemente de sus condiciones.
-                                        </div>
-                                    </div>
+                                    <div class="media">
+                                        <img src="~/images/fotoPerfil/@comentariosPublicacion.FotoPerfil" class="mr-3 mt-2 rounded-pill" width="60" height="60">
+                                        <div class="media-body text-info">
+                                            <div class="card-title text-success font-weight-bold mt-0 h6">@comentariosPublicacion.Nombre @comentariosPublicacion.Apellido</div>
+                                            @comentariosPublicacion.UserComentario
+                                            <p class="card-text"><small class="text-muted small">@comentariosPublicacion.Fecha</small></p>
 
+                                            <p>
+                                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsubcomentarios" aria-expanded="false" aria-controls="collapseExample">
+                                                    Responder
+                                                </button>
 
-                                </div>
+                                                <a class="card-link" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                                    Ver Respuestas
+                                                </a>
+                                            </p>
 
-                                <div class="collapse" id="collapsubcomentarios">
-
-
-
-                                    <div class="card-footer bg-transparent border-info align-items-center">
-                                        <form asp-action="Comentar" method="post" asp-controller="Central">
-                                            <div class="form-group row">
-                                                <div class="col-sm-10">
-                                                    <input type="hidden" name="IdPublicacion" value="" />
-                                                    <input type="hidden" name="aplicacion" value="1" />
-                                                    <input type="text" placeholder="Escribir Comentario....." class="form-control" name="Comentario1">
+                                            <div class="collapse" id="collapseExample">
+                                                <div class="media mt-3">
+                                                    <a class="mr-3" href="#">
+                                                        <img src="~/images/fotoPerfil/hola.jpg" class="mr-3 mt-2 rounded-pill" width="60" height="60">
+                                                    </a>
+                                                    <div class="media-body">
+                                                        <h6 class="mt-0 font-weight-bold">SubComentarios</h6>
+                                                        Pablo recoge la basura amigo mio.f Todos somos iguales independientemente de sus condiciones.
+                                                    </div>
                                                 </div>
-                                                <button type="submit" class="btn btn-primary col-lg-pull-9">Enviar</button>
+
+
+
+                                                <div class="media mt-3">
+                                                    <a class="mr-3" href="#">
+                                                        <img src="~/images/fotoPerfil/hola.jpg" class="mr-3 mt-2 rounded-pill" width="60" height="60">
+                                                    </a>
+                                                    <div class="media-body">
+                                                        <h6 class="mt-0 font-weight-bold">SubComentarios</h6>
+                                                        Pablo recoge la basura amigo mio.f Todos somos iguales independientemente de sus condiciones.
+                                                    </div>
+                                                </div>
+
 
                                             </div>
-                                        </form>
+
+                                            <div class="collapse" id="collapsubcomentarios">
+
+
+
+                                                <div class="card-footer bg-transparent border-info align-items-center">
+                                                    <form asp-action="SubComentar" asp-controller="Central" method="post">
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-10">
+                                                                <input type="hidden" name="IdPublicacion" value="" />
+                                                                <input type="hidden" name="aplicacion" value="1" />
+                                                                <input type="text" placeholder="Escribir Comentario....." class="form-control" name="Comentario1">
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary col-lg-pull-9">Enviar</button>
+
+                                                        </div>
+                                                    </form>
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
 
                                     </div>
+
                                 </div>
 
 
-                            </div>
+                            }
+
+                        <div class="card-footer bg-transparent border-info align-items-center">
+                            <form asp-action="Comentarios" asp-controller="PublicacionUsuario" method="post">
+                                <div class="form-group row">
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="idpublicacion" value="@mypublicaciones.IdPublicacion" />
+                                        <input name="comentar" placeholder="Escribir Comentario....." class="form-control">
+                                        <span class="text-danger">@ViewBag.Comenta</span>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary col-lg-pull-11">Comentar</button>
+
+                                </div>
+                            </form>
 
 
                         </div>
-
                     </div>
 
-                    <div class="card-footer bg-transparent border-info align-items-center">
-                        <form asp-action="Comentar" method="post" asp-controller="Central">
-                            <div class="form-group row">
-                                <div class="col-sm-10">
-                                    <input type="hidden" name="IdPublicacion" value="" />
-                                    <input type="hidden" name="aplicacion" value="1" />
-                                    <input type="text" placeholder="Escribir Comentario....." class="form-control" name="Comentario1">
-                                </div>
-                                <button type="submit" class="btn btn-primary col-lg-pull-11">Comentar</button>
-
-                            </div>
-                        </form>
 
 
-                    </div>
                 </div>
+            }
 
 
-
-            </div>
-
-
-        
-                </div>
 
         </div>
- </body>
+
+    </div>
+</body>

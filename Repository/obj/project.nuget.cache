@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "nlkk9FY3t7JYNJvwR1M4hdYF3elwMLFzW5eF4/tKQA7n2q2UpWwAnvtVxhECDT/scmWZQTFWhdtihCkMhkO4jw==",
+  "dgSpecHash": "3ME71NsAmxRM8p7fFp17h/K8Tsy4GqlXcj2Wqow98XyWZZ0jJvd7g62u3OPOGsU4DfrVQuOF6zWHezIiMab+eA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Pablo Molina\\source\\repos\\Miniproyecto_SocialNetwork\\Repository\\Repository.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Pablo Molina\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\Pablo Molina\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\Pablo Molina\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Pablo Molina\\.nuget\\packages\\microsoft.aspnetcore.authentication.cookies\\2.2.0\\microsoft.aspnetcore.authentication.cookies.2.2.0.nupkg.sha512",
@@ -85,7 +86,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.net.primitives\\4.3.0\\system.net.primitives.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.private.datacontractserialization\\4.3.0\\system.private.datacontractserialization.4.3.0.nupkg.sha512",
     "C:\\Users\\Pablo Molina\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
+    "C:\\Users\\Pablo Molina\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",

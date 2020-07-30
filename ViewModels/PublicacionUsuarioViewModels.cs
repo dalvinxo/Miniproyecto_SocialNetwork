@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Database.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -21,8 +22,9 @@ namespace ViewModels
         [Display(Name = "Cuerpo de la publicación:")]
         [StringLength(1500)]
         public string Cuerpo { get; set; }
+
         public DateTime Fecha { get; set; }
-        public string FotoPublicacion { get; set; }
+        
         public int IdUsuario { get; set; }
 
         [Display(Name = "Foto de la publicacion: ")]
@@ -32,7 +34,21 @@ namespace ViewModels
 
         public string Apellido { get; set; }
 
+        public string FotoPerfil { get; set; }
+
+        public string FotoPublicacion { get; set; }
+
+
+        public virtual TablaComentariosViewModels ComentariosUsuario { get; set; }
+
+
+        public List<PublicacionPlantilla> ListaPublicacionPlantilla { get; set; }
+        public List<ComentarioPlantilla> ListaComentarioPlantilla { get; set; }
+
+
     }
+
+
 
 
 

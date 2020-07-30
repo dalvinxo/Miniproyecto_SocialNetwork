@@ -1,8 +1,10 @@
 ﻿using Database.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Repository.BaseRepository;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ViewModels;
@@ -41,6 +43,15 @@ namespace Repository.Repository
             }
 
             return false;
+        }
+
+
+
+
+        //Obtener IdUsuario
+        public async Task<int> ReturnIdUsuarioLogueado(string nombre) {
+            var usuario = await _context.TablaUsuario.FirstOrDefaultAsync(x => x.NombreUsuario == nombre);
+            return usuario.IdUsuario;
         }
 
 

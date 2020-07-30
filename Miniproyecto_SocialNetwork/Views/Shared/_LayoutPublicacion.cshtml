@@ -24,11 +24,11 @@
 <body>
     <header class="container-fluid position-relative shadow p-2 rounded-bottom">
         <nav class="navbar fixed-top navbar-dark bg-dark">
-            <img src="~/images/fotoPerfil/hola.jpg" asp-append-version="true" class="rounded-pill" width="80" height="80"> <a asp-action="Index" class="navbar-brand" style="margin-left:-250px"><h1 class="align-items-center ">SocialNetwork2: @ViewData["nt"]</h1></a>
+            <img src="~/images/fotoPerfil/@ViewData["perfil"]" asp-append-version="true" class="rounded-pill" width="80" height="80"> <a asp-action="Index" class="navbar-brand" style="margin-left:-412px"><h1 class="align-items-center ">SocialNetwork2: @ViewData["nt"]</h1></a>
             <div class="form-inline">
                 <ul class="nav justify-content-end nav-pills">
                     <li class="nav-item">
-                        <a class="nav-link active" asp-action="Index">Home</a>
+                        <a class="nav-link @ViewData["activadorHome"]" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-action="Friends" style="margin-right:15px;">Amigos</a>

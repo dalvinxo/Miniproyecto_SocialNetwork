@@ -1,7 +1,6 @@
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Email\bin\Debug\netcoreapp3.1\Email.deps.json
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Email\bin\Debug\netcoreapp3.1\Email.dll
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Email\bin\Debug\netcoreapp3.1\Email.pdb
-C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Email\obj\Debug\netcoreapp3.1\Email.csprojAssemblyReference.cache
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Email\obj\Debug\netcoreapp3.1\Email.AssemblyInfoInputs.cache
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Email\obj\Debug\netcoreapp3.1\Email.AssemblyInfo.cs
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Email\obj\Debug\netcoreapp3.1\Email.csproj.CoreCompileInputs.cache
