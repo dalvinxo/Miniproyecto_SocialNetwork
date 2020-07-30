@@ -20,16 +20,18 @@ namespace Repository.Repository
         private readonly IHostingEnvironment hostingEnvironment;
         private readonly TablaUsuarioRepository _tablaUsuarioRepository;
         private readonly TablaComentarioRepository _tablaComentarioRepository;
+        private readonly SubTablaComentarioRepository _subTablaComentarioRepository;
 
         public TablaPublicacionRepository(SocialNetworkContext context, IMapper mapper,
-              IHostingEnvironment hostingEnvironment, TablaUsuarioRepository tablaUsuarioRepository, TablaComentarioRepository tablaComentarioRepository) : base(context)
+              IHostingEnvironment hostingEnvironment, TablaUsuarioRepository tablaUsuarioRepository, 
+              TablaComentarioRepository tablaComentarioRepository, SubTablaComentarioRepository subTablaComentarioRepository) : base(context)
         {
             _context = context;
             _mapper = mapper;
             this.hostingEnvironment = hostingEnvironment;
             _tablaUsuarioRepository = tablaUsuarioRepository;
             _tablaComentarioRepository = tablaComentarioRepository;
-
+            _subTablaComentarioRepository = subTablaComentarioRepository;
         }
 
 
@@ -111,6 +113,27 @@ namespace Repository.Repository
             return listado;
         }
 
+        public async Task<List<PlantillaSubComentarios>> TraerSubComentariosMyUsuario()
+        {
+
+            var subcomentarios = await _subTablaComentarioRepository.GetAllAsync();
+
+            var listado = new List<PlantillaSubComentarios>();
+
+            foreach (var op in subcomentarios)
+            {
+                var usuario = await _tablaUsuarioRepository.GetByIdAsync(op.IdUsuario);
+                var final = _mapper.Map<PlantillaSubComentarios>(op);
+                final.Nombre = usuario.Nombre;
+                final.Apellido = usuario.Apellido;
+                final.FotoPerfil = usuario.FotoPerfil;
+
+                listado.Add(final);
+
+            }
+
+            return listado;
+        }
 
 
 

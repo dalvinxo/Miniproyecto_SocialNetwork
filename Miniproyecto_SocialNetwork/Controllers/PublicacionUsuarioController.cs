@@ -23,13 +23,14 @@ namespace Miniproyecto_SocialNetwork.Controllers
         private readonly TablaUsuarioRepository _tablaUsuarioRepository;
         private readonly TablaPublicacionRepository _tablaPublicacionRepository;
         private readonly TablaComentarioRepository _tablaComentarioRepository;
+        private readonly SubTablaComentarioRepository _subTablaComentarioRepository;
         private readonly IMapper _mapper;
         private readonly SignInManager<IdentityUser> _signInManager;
 
 
         public PublicacionUsuarioController(IMapper mapper, TablaUsuarioRepository tablaUsuarioRepository,
             SignInManager<IdentityUser> signInManager, TablaPublicacionRepository tablaPublicacionRepository,
-            TablaComentarioRepository tablaComentarioRepository)
+            TablaComentarioRepository tablaComentarioRepository, SubTablaComentarioRepository subTablaComentarioRepository)
         {
             
             _mapper = mapper;
@@ -37,6 +38,7 @@ namespace Miniproyecto_SocialNetwork.Controllers
             _tablaPublicacionRepository = tablaPublicacionRepository;
             _tablaComentarioRepository = tablaComentarioRepository;
             _signInManager = signInManager;
+            _subTablaComentarioRepository = subTablaComentarioRepository;
 
         }
 
@@ -45,22 +47,19 @@ namespace Miniproyecto_SocialNetwork.Controllers
             return await _tablaUsuarioRepository.ReturnIdUsuarioLogueado(User.Identity.Name); ;
         }
 
-
-
-
         public async Task<IActionResult> Home()
         {
-         ///   string nameUser = User.Identity.Name;
-
-            
+        
             var PublicacionesUsuario = await _tablaPublicacionRepository.TraarPublicacionesMyUsuario(await IdUsuarioClienteAsync());
             var ComentarioUsuarios = await _tablaPublicacionRepository.TraerComentariosMyUsuario();
+            var SubComentarioUsuarios = await _tablaPublicacionRepository.TraerSubComentariosMyUsuario();
             var UsuarioActivo = await _tablaUsuarioRepository.GetByIdAsync(await IdUsuarioClienteAsync());
             
 
             PublicacionUsuarioViewModels pb = new PublicacionUsuarioViewModels();
             pb.ListaComentarioPlantilla = ComentarioUsuarios;
             pb.ListaPublicacionPlantilla = PublicacionesUsuario;
+            pb.ListaSubComentarioPlantilla = SubComentarioUsuarios;
             ViewBag.usuarioNombre = UsuarioActivo.NombreUsuario;
             ViewBag.PhotoProfile = UsuarioActivo.FotoPerfil;
             ViewBag.Id = await IdUsuarioClienteAsync();
@@ -132,7 +131,33 @@ namespace Miniproyecto_SocialNetwork.Controllers
         }
 
 
+        [HttpPost]
+        public async Task<IActionResult> SubComentar(string comentar, int IdComentario)
+        {
+
+            if (comentar != null)
+            {
+                SubComentariosViewModels coment = new SubComentariosViewModels();
+                ViewBag.Comentare = "";
+                coment.UserComentario = comentar;
+                coment.IdComentario = IdComentario;
+                coment.IdUsuario = await IdUsuarioClienteAsync();
+                var subComentar = _mapper.Map<SubTablaComentarios>(coment);
+                await _subTablaComentarioRepository.AddAsync(subComentar);
+                return RedirectToAction("Home", "PublicacionUsuario");
+            }
+            else
+            {
+                ViewBag.Comentare = "No puedes enviar respuestas vacios...";
+                return RedirectToAction("Home", "PublicacionUsuario");
+            }
+
         }
+
+
+
+
+    }
 
 
  }

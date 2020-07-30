@@ -89,65 +89,65 @@
 
                                     <div class="media">
                                         <img src="~/images/fotoPerfil/@comentariosPublicacion.FotoPerfil" class="mr-3 mt-2 rounded-pill" width="60" height="60">
-                                        <div class="media-body text-info">
+                                        <div class="media-body text-dark h8">
                                             <div class="card-title text-success font-weight-bold mt-0 h6">@comentariosPublicacion.Nombre @comentariosPublicacion.Apellido</div>
                                             @comentariosPublicacion.UserComentario
                                             <p class="card-text"><small class="text-muted small">@comentariosPublicacion.Fecha</small></p>
 
                                             <p>
-                                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsubcomentarios" aria-expanded="false" aria-controls="collapseExample">
+                                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsubcomentarios_@comentariosPublicacion.IdComentario" aria-expanded="false" aria-controls="collapseExample">
                                                     Responder
                                                 </button>
 
-                                                <a class="card-link" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                                <a class="card-link" data-toggle="collapse" href="#COmentario_@comentariosPublicacion.IdComentario" role="button" aria-expanded="false" aria-controls="COmentario_@comentariosPublicacion.IdComentario">
                                                     Ver Respuestas
                                                 </a>
                                             </p>
 
-                                            <div class="collapse" id="collapseExample">
-                                                <div class="media mt-3">
-                                                    <a class="mr-3" href="#">
-                                                        <img src="~/images/fotoPerfil/hola.jpg" class="mr-3 mt-2 rounded-pill" width="60" height="60">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <h6 class="mt-0 font-weight-bold">SubComentarios</h6>
-                                                        Pablo recoge la basura amigo mio.f Todos somos iguales independientemente de sus condiciones.
-                                                    </div>
-                                                </div>
+                                            <div class="collapse" id="COmentario_@comentariosPublicacion.IdComentario">
+
+                                                @foreach (var subComentarioMyUser in Model.ListaSubComentarioPlantilla)
+                                                {
+
+                                                    if (comentariosPublicacion.IdComentario == subComentarioMyUser.IdComentario)
+
+                                                    {
+
+                                                        <div class="media mt-3">
+                                                            <a class="mr-3" href="#">
+                                                                <img src="~/images/fotoPerfil/@subComentarioMyUser.FotoPerfil" class="mr-3 mt-2 rounded-pill" width="60" height="60">
+                                                            </a>
+                                                            <div class="media-body">
+                                                                <h6 class="mt-0 font-weight-bold">@subComentarioMyUser.Nombre @subComentarioMyUser.Apellido</h6>
+                                                                @subComentarioMyUser.UserComentario
+                                                                <p><small class="text-muted small">@subComentarioMyUser.Fecha</small></p>
+
+                                                            </div>
+                                                        </div>
 
 
+                                                    }
 
-                                                <div class="media mt-3">
-                                                    <a class="mr-3" href="#">
-                                                        <img src="~/images/fotoPerfil/hola.jpg" class="mr-3 mt-2 rounded-pill" width="60" height="60">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <h6 class="mt-0 font-weight-bold">SubComentarios</h6>
-                                                        Pablo recoge la basura amigo mio.f Todos somos iguales independientemente de sus condiciones.
-                                                    </div>
-                                                </div>
 
+                                                }
 
                                             </div>
 
-                                            <div class="collapse" id="collapsubcomentarios">
-
-
+                                            <div class="collapse" id="collapsubcomentarios_@comentariosPublicacion.IdComentario">
 
                                                 <div class="card-footer bg-transparent border-info align-items-center">
-                                                    <form asp-action="SubComentar" asp-controller="Central" method="post">
+                                                    <form asp-action="SubComentar" asp-controller="PublicacionUsuario" method="post">
                                                         <div class="form-group row">
                                                             <div class="col-sm-10">
-                                                                <input type="hidden" name="IdPublicacion" value="" />
-                                                                <input type="hidden" name="aplicacion" value="1" />
-                                                                <input type="text" placeholder="Escribir Comentario....." class="form-control" name="Comentario1">
+                                                                <input type="hidden" name="IdComentario" value="@comentariosPublicacion.IdComentario" />
+                                                                <input name="comentar" placeholder="Escribir Comentario....." class="form-control">
+                                                                <span class="text-danger">@ViewBag.Comentare</span>
                                                             </div>
                                                             <button type="submit" class="btn btn-primary col-lg-pull-9">Enviar</button>
-
                                                         </div>
                                                     </form>
-
                                                 </div>
+
                                             </div>
 
 

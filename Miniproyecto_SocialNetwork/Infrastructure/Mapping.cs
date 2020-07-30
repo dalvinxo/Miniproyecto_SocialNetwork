@@ -18,6 +18,9 @@ namespace Miniproyecto_SocialNetwork.Infrastructure
             MapearViewPublicacionPlantilla();
             MapearComentario();
             MapearViewComentarioPlantilla();
+            MapearSubComentario();
+            MapearViewSubComentarioPlantilla();
+
         }
 
         private void MapearRegistroUsuario()
@@ -36,6 +39,7 @@ namespace Miniproyecto_SocialNetwork.Infrastructure
                        ForMember(dest => dest.FotoPerfil, opt => opt.Ignore()).
                         ForMember(dest => dest.ComentariosUsuario, opt => opt.Ignore()).
                         ForMember(dest => dest.ListaComentarioPlantilla, opt => opt.Ignore()).
+                          ForMember(dest => dest.ListaSubComentarioPlantilla, opt => opt.Ignore()).
                         ForMember(dest => dest.ListaPublicacionPlantilla, opt => opt.Ignore())
                         ;
         }
@@ -58,9 +62,24 @@ namespace Miniproyecto_SocialNetwork.Infrastructure
                         ;
         }
 
+        private void MapearViewSubComentarioPlantilla()
+        {
+            CreateMap<PlantillaSubComentarios, SubTablaComentarios>().ReverseMap().
+                        ForMember(dest => dest.Nombre, opt => opt.Ignore()).
+                        ForMember(dest => dest.Apellido, opt => opt.Ignore()).
+                       ForMember(dest => dest.FotoPerfil, opt => opt.Ignore())
+                        ;
+        }
+
+
         private void MapearComentario()
         {
             CreateMap<TablaComentariosViewModels, TablaComentarios>().ReverseMap();
+        }
+
+        private void MapearSubComentario()
+        {
+            CreateMap<SubComentariosViewModels, SubTablaComentarios>().ReverseMap();
         }
 
 

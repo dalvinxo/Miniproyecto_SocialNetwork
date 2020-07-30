@@ -42,6 +42,7 @@ namespace ViewModels
         public virtual TablaComentariosViewModels ComentariosUsuario { get; set; }
 
 
+        public List<PlantillaSubComentarios> ListaSubComentarioPlantilla { get; set; }
         public List<PublicacionPlantilla> ListaPublicacionPlantilla { get; set; }
         public List<ComentarioPlantilla> ListaComentarioPlantilla { get; set; }
 
