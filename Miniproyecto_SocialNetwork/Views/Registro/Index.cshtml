@@ -1,0 +1,125 @@
+﻿@model ViewModels.RegistroViewModels
+@{
+    ViewData["Title"] = "Registro";
+    ViewData["banner"] = "Registro de usuario";
+    ViewData["controller"] = "Account";
+    ViewData["action"] = "Login";
+    Layout = "~/Views/Shared/_LayoutRegistro.cshtml";
+}
+<body  id="login-body">
+    <div class="card container border border-text rounded shadow-lg p-1 mb-5 border border-primary bg-success">
+
+        <div class="card-header p-2 bg-transparent text-white">
+
+            <h2><i class="fa fa-user-plus" aria-hidden="true"></i> Agregar Usuario</h2>
+
+        </div>
+
+        <div class="card-body bg-light">
+
+            <form asp-action="Index" asp-controller="Registro" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="form-group">
+                    <div class="row col-lg-3">
+                        <label asp-for="FotoProfile" class="ml-2"></label>
+                    </div>
+                    <input asp-for="FotoProfile" class="form-control" placeholder="Seleccionar foto" />
+                    <div class="row col-lg-8">
+                        <span asp-validation-for="FotoProfile" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <div class="row col-lg-3">
+                            <label class="ml-2" asp-for="Nombre"></label>
+                        </div>
+                        <input asp-for="Nombre" class="form-control shadow-sm p-3 bg-white rounded-pill form-control-lg" placeholder="Ingresar Nombre" />
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="row col-lg-3">
+                            <label asp-for="Apellido" class="ml-2"></label>
+                        </div>
+                        <input asp-for="Apellido" class="form-control shadow-sm p-3 bg-white rounded-pill form-control-lg" placeholder="Ingresar Apellido" />
+                        <span asp-validation-for="Apellido" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="row col-lg-8">
+                        <label asp-for="Correo" class="labelPago ml-2"></label>
+                    </div>
+                    <input asp-for="Correo" class="form-control shadow-sm p-3 bg-white rounded-pill form-control-lg" placeholder="Ingresar Correo" />
+                    <span asp-validation-for="Correo" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <div class="row col-lg-8">
+                        <label asp-for="Telefono" class="control-label"></label>
+                    </div>
+                    <input asp-for="Telefono" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control shadow-sm p-3 bg-white rounded-pill form-control-lg" placeholder="Ingresar Telefono" />
+                    <span asp-validation-for="Telefono" class="text-danger"></span>
+                    <div class="row col-lg-10 col-lg-pull-1 ml-2">
+                        <small class="text-info">Formato: 000-000-0000</small>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="row col-lg-3">
+                        <label asp-for="NombreUsuario" class="labelPago ml-2"></label>
+                    </div>
+                    <input asp-for="NombreUsuario" class="form-control shadow-sm p-3 bg-white rounded-pill form-control-lg" placeholder="Ingresar Usuario" />
+                    <div class="row col-lg-8">
+                        <span asp-validation-for="NombreUsuario" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row col-lg-3">
+                        <label asp-for="Clave" class="labelPago ml-2"></label>
+                    </div>
+                    <input asp-for="Clave" class="form-control shadow-sm p-3 bg-white rounded-pill form-control-lg" id="Clave" placeholder="Ingresar Contraseña" />
+                    <div class="row col-lg-8">
+                        <span asp-validation-for="Clave" class="text-danger ml-2"></span>
+                        <div class="custom-control custom-switch ml-2">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch1" onclick="myFunction()">
+                            <label class="custom-control-label" for="customSwitch1">Mostar Contraseña.</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row col-lg-8" style="margin-top:-12px;">
+                        <label asp-for="ConfirmClave" class="labelPago ml-2 mt-3"></label>
+                    </div>
+                    <input asp-for="ConfirmClave" class="form-control shadow-sm p-3 bg-white rounded-pill form-control-lg" placeholder="Confirmar Contraseña" />
+                    <div class="row col-lg">
+                        <span asp-validation-for="ConfirmClave" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <input asp-for="Estado" type="hidden" value="Inactivo">
+
+                <div class="form-row mt-4">
+                    <div class="form-group col-6">
+                        <input type="submit" value="Crear" style="font-size:20px;" class="btn btn-outline-success btn-block  shadow rounded" />
+                    </div>
+                    <div class="form-group col-6">
+                        <input type="reset" style="font-size:20px;" value="Restablecer" class="btn btn-outline-warning btn-block shadow  rounded">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+
+    </div>
+
+</body>
