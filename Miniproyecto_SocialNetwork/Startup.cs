@@ -42,9 +42,7 @@ namespace Miniproyecto_SocialNetwork
 
             //repository
             services.AddScoped<TablaUsuarioRepository>();
-
             services.AddScoped<TablaPublicacionRepository>();
-
             services.AddScoped<TablaComentarioRepository>();
             services.AddScoped<TablaAmigoRepository>();
             services.AddScoped<SubTablaComentarioRepository>();

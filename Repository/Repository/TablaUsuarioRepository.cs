@@ -158,6 +158,11 @@ namespace Repository.Repository
 
         }
 
+        public async Task<TablaUsuario> ReturnUsuario(string nombre)
+        {
+            return await _context.TablaUsuario.FirstOrDefaultAsync(x => x.NombreUsuario == nombre);
+        }
+
 
     }
 }

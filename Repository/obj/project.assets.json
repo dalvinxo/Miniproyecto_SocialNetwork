@@ -15,6 +15,20 @@
           "lib/netstandard2.0/AutoMapper.dll": {}
         }
       },
+      "AutoMapper.Extensions.Microsoft.DependencyInjection/8.0.1": {
+        "type": "package",
+        "dependencies": {
+          "AutoMapper": "[10.0.0, 11.0.0)",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.0.0",
+          "Microsoft.Extensions.Options": "3.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Authentication/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -1699,6 +1713,24 @@
           "bin/placeholder/Database.dll": {}
         }
       },
+      "DTO/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "AutoMapper": "10.0.0",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.0.1",
+          "Database": "1.0.0",
+          "Microsoft.AspNetCore.Http": "2.2.2",
+          "Microsoft.AspNetCore.Identity": "2.2.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.0"
+        },
+        "compile": {
+          "bin/placeholder/DTO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DTO.dll": {}
+        }
+      },
       "ViewModels/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -1734,6 +1766,19 @@
         "lib/net461/AutoMapper.xml",
         "lib/netstandard2.0/AutoMapper.dll",
         "lib/netstandard2.0/AutoMapper.xml"
+      ]
+    },
+    "AutoMapper.Extensions.Microsoft.DependencyInjection/8.0.1": {
+      "sha512": "hhUzmc8Ld7wCuVHJFodsxtPmFqBAhB6nUNQUgaMF3uamQdxOLxntG0dwv+5ApC67GABa8Oay8MEYGg5IgVZP1Q==",
+      "type": "package",
+      "path": "automapper.extensions.microsoft.dependencyinjection/8.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",
+        "automapper.extensions.microsoft.dependencyinjection.nuspec",
+        "icon.png",
+        "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
       ]
     },
     "Microsoft.AspNetCore.Authentication/2.2.0": {
@@ -5954,6 +5999,11 @@
       "path": "../Database/Database.csproj",
       "msbuildProject": "../Database/Database.csproj"
     },
+    "DTO/1.0.0": {
+      "type": "project",
+      "path": "../DTO/DTO.csproj",
+      "msbuildProject": "../DTO/DTO.csproj"
+    },
     "ViewModels/1.0.0": {
       "type": "project",
       "path": "../ViewModels/ViewModels.csproj",
@@ -5963,6 +6013,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "AutoMapper >= 10.0.0",
+      "DTO >= 1.0.0",
       "Database >= 1.0.0",
       "Microsoft.AspNetCore.Http >= 2.2.2",
       "Microsoft.AspNetCore.Identity >= 2.2.0",
@@ -6008,6 +6059,9 @@
           "projectReferences": {
             "C:\\Users\\Pablo Molina\\source\\repos\\Miniproyecto_SocialNetwork\\Database\\Database.csproj": {
               "projectPath": "C:\\Users\\Pablo Molina\\source\\repos\\Miniproyecto_SocialNetwork\\Database\\Database.csproj"
+            },
+            "C:\\Users\\Pablo Molina\\source\\repos\\Miniproyecto_SocialNetwork\\DTO\\DTO.csproj": {
+              "projectPath": "C:\\Users\\Pablo Molina\\source\\repos\\Miniproyecto_SocialNetwork\\DTO\\DTO.csproj"
             },
             "C:\\Users\\Pablo Molina\\source\\repos\\Miniproyecto_SocialNetwork\\ViewModels\\ViewModels.csproj": {
               "projectPath": "C:\\Users\\Pablo Molina\\source\\repos\\Miniproyecto_SocialNetwork\\ViewModels\\ViewModels.csproj"

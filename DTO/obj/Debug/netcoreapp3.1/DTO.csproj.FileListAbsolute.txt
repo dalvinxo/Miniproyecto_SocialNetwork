@@ -1,0 +1,12 @@
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\DTO\bin\Debug\netcoreapp3.1\DTO.deps.json
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\DTO\bin\Debug\netcoreapp3.1\DTO.dll
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\DTO\bin\Debug\netcoreapp3.1\Database.dll
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\DTO\bin\Debug\netcoreapp3.1\Database.pdb
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\DTO\obj\Debug\netcoreapp3.1\DTO.csprojAssemblyReference.cache
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\DTO\obj\Debug\netcoreapp3.1\DTO.AssemblyInfoInputs.cache
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\DTO\obj\Debug\netcoreapp3.1\DTO.AssemblyInfo.cs
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\DTO\obj\Debug\netcoreapp3.1\DTO.csproj.CopyComplete
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\DTO\bin\Debug\netcoreapp3.1\DTO.pdb
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\DTO\obj\Debug\netcoreapp3.1\DTO.dll
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\DTO\obj\Debug\netcoreapp3.1\DTO.pdb
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\DTO\obj\Debug\netcoreapp3.1\DTO.csproj.CoreCompileInputs.cache

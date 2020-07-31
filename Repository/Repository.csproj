@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Database\Database.csproj" />
+    <ProjectReference Include="..\DTO\DTO.csproj" />
     <ProjectReference Include="..\ViewModels\ViewModels.csproj" />
   </ItemGroup>
 

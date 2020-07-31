@@ -3146,6 +3146,24 @@
           "bin/placeholder/Database.dll": {}
         }
       },
+      "DTO/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "AutoMapper": "10.0.0",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.0.1",
+          "Database": "1.0.0",
+          "Microsoft.AspNetCore.Http": "2.2.2",
+          "Microsoft.AspNetCore.Identity": "2.2.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.0"
+        },
+        "compile": {
+          "bin/placeholder/DTO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DTO.dll": {}
+        }
+      },
       "Email/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -3164,6 +3182,7 @@
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "AutoMapper": "10.0.0",
+          "DTO": "1.0.0",
           "Database": "1.0.0",
           "Microsoft.AspNetCore.Http": "2.2.2",
           "Microsoft.AspNetCore.Identity": "2.2.0",
@@ -9804,6 +9823,11 @@
       "type": "project",
       "path": "../Database/Database.csproj",
       "msbuildProject": "../Database/Database.csproj"
+    },
+    "DTO/1.0.0": {
+      "type": "project",
+      "path": "../DTO/DTO.csproj",
+      "msbuildProject": "../DTO/DTO.csproj"
     },
     "Email/1.0.0": {
       "type": "project",

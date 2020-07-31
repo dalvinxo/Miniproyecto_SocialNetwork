@@ -2488,6 +2488,22 @@
           "Database.dll": {}
         }
       },
+      "DTO/1.0.0": {
+        "dependencies": {
+          "AutoMapper": "10.0.0",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.0.1",
+          "Database": "1.0.0",
+          "Microsoft.AspNetCore.Http": "2.2.2",
+          "Microsoft.AspNetCore.Identity": "2.2.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.0"
+        },
+        "runtime": {
+          "DTO.dll": {}
+        },
+        "compile": {
+          "DTO.dll": {}
+        }
+      },
       "Email/1.0.0": {
         "dependencies": {
           "NETCore.MailKit": "2.0.3"
@@ -2502,6 +2518,7 @@
       "Repository/1.0.0": {
         "dependencies": {
           "AutoMapper": "10.0.0",
+          "DTO": "1.0.0",
           "Database": "1.0.0",
           "Microsoft.AspNetCore.Http": "2.2.2",
           "Microsoft.AspNetCore.Identity": "2.2.0",
@@ -5597,6 +5614,11 @@
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
     "Database/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DTO/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

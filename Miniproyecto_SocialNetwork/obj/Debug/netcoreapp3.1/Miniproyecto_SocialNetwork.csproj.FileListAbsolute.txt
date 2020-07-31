@@ -168,3 +168,5 @@ C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Miniproyecto_Socia
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Miniproyecto_SocialNetwork\obj\Debug\netcoreapp3.1\Razor\Views\Advertencia\RestaurarCuenta.cshtml.g.cs
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Miniproyecto_SocialNetwork\obj\Debug\netcoreapp3.1\Razor\Views\Advertencia\VerificarGmail.cshtml.g.cs
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Miniproyecto_SocialNetwork\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutAdvertencia.cshtml.g.cs
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Miniproyecto_SocialNetwork\bin\Debug\netcoreapp3.1\DTO.dll
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Miniproyecto_SocialNetwork\bin\Debug\netcoreapp3.1\DTO.pdb

@@ -15,3 +15,5 @@ C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Repository\obj\Deb
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Repository\obj\Debug\netcoreapp3.1\Repository.pdb
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Repository\obj\Debug\netcoreapp3.1\Repository.genruntimeconfig.cache
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Repository\obj\Debug\netcoreapp3.1\Repository.csproj.CoreCompileInputs.cache
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Repository\bin\Debug\netcoreapp3.1\DTO.dll
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Repository\bin\Debug\netcoreapp3.1\DTO.pdb

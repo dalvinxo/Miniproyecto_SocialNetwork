@@ -9,6 +9,7 @@
       "Repository/1.0.0": {
         "dependencies": {
           "AutoMapper": "10.0.0",
+          "DTO": "1.0.0",
           "Database": "1.0.0",
           "Microsoft.AspNetCore.Http": "2.2.2",
           "Microsoft.AspNetCore.Identity": "2.2.0",
@@ -31,6 +32,19 @@
           "lib/netstandard2.0/AutoMapper.dll": {
             "assemblyVersion": "10.0.0.0",
             "fileVersion": "10.0.0.0"
+          }
+        }
+      },
+      "AutoMapper.Extensions.Microsoft.DependencyInjection/8.0.1": {
+        "dependencies": {
+          "AutoMapper": "10.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.0",
+          "Microsoft.Extensions.Options": "3.1.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.1.0"
           }
         }
       },
@@ -1215,6 +1229,19 @@
           "Database.dll": {}
         }
       },
+      "DTO/1.0.0": {
+        "dependencies": {
+          "AutoMapper": "10.0.0",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.0.1",
+          "Database": "1.0.0",
+          "Microsoft.AspNetCore.Http": "2.2.2",
+          "Microsoft.AspNetCore.Identity": "2.2.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.0"
+        },
+        "runtime": {
+          "DTO.dll": {}
+        }
+      },
       "ViewModels/1.0.0": {
         "dependencies": {
           "Database": "1.0.0",
@@ -1242,6 +1269,13 @@
       "sha512": "sha512-T09NoqMZBqw0/JEauXulxnmmerl0Zj03e0r6VCcJ0LURWBIaYxZPPoiDv8bHf5Y4x2xcXJp4JPXoCaeOMJfHEA==",
       "path": "automapper/10.0.0",
       "hashPath": "automapper.10.0.0.nupkg.sha512"
+    },
+    "AutoMapper.Extensions.Microsoft.DependencyInjection/8.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hhUzmc8Ld7wCuVHJFodsxtPmFqBAhB6nUNQUgaMF3uamQdxOLxntG0dwv+5ApC67GABa8Oay8MEYGg5IgVZP1Q==",
+      "path": "automapper.extensions.microsoft.dependencyinjection/8.0.1",
+      "hashPath": "automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication/2.2.0": {
       "type": "package",
@@ -2070,6 +2104,11 @@
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
     "Database/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DTO/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
