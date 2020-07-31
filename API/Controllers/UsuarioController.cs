@@ -144,14 +144,14 @@ namespace API.Controllers
 
         [HttpPost]
         [Route("Agregar/{Friends}")]
-        public async Task<ActionResult> PostAmigo(string Friends,string Usuario, string Clave)
+        public async Task<ActionResult> PostAmigo(string Friends, string Usuario, string Clave)
         {
 
             if (ModelState.IsValid)
             {
 
 
-                var action = await _usuarioRepositoryAPI.AddAmigoDTO(Usuario,Clave,Friends);
+                var action = await _usuarioRepositoryAPI.AddAmigoDTO(Usuario, Clave, Friends);
 
                 if (action)
                 {
@@ -168,37 +168,6 @@ namespace API.Controllers
             return BadRequest();
 
         }
-
-
-
-
-        //[HttpGet]
-        //[Route("UsuarioAmigo/{UserName}")]
-        //public async Task<ActionResult<List<OrderMesaDTO>>> GetOrderTable(string UserName)
-        //{
-
-        //    try
-        //    {
-        //        var OrderMesa = await _mesarepo.GetOrdenMesaByIdDTO(id.Value);
-
-        //        if (OrderMesa == null)
-        //        {
-        //            return NotFound();
-        //        }
-
-        //        return OrderMesa;
-        //    }
-        //    catch
-        //    {
-        //        return StatusCode(500);
-        //    }
-
-        //}
-
-
-
-
-
 
 
     }
