@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Restablecer";
+    Layout = "~/Views/Shared/_LayoutAdvertencia.cshtml";
+}
+
+    <body id="login-body">
+
+        @if (ViewBag.omg == 1)
+        {
+            <div class="alert alert-danger alert - dismissible fade show" role="alert" style="padding-left:10px; margin:10px; font-size:20px;">
+                <h4 class="alert-heading">Usuario Invalido</h4>
+                <hr /><h5>El usuario <strong class="text-dark">"@ViewBag.Name"</strong>. No existe en el sistema, Por favor registrarse: <a asp-action="Index" asp-controller="Registro" class="btn btn-outline-info">Registrase!</a></h5>
+                <hr>
+                <p class="mb-0 text-dark">Puede volver a realizar la petición, asegurese de que el usuario este digitado correctamente, para eso haga click <a asp-action="Login" asp-controller="Account" class="text-info text-link">aquí</a>  </p>
+            </div>
+
+        }
+        else
+        {
+
+        <div class="alert alert-success alert-dismissible fade show" role="alert" style="padding-left:10px; margin:10px; font-size:20px;">
+            <h4 class="alert-heading">Comunicación: <a asp-action="Login" asp-controller="Account" class="btn-primary btn-sm">Atras</a></h4>
+            <hr />Para poder tener acceso a su cuenta, hemos generado una contraseña para usted. y ha sido enviada al correo: <strong class="text-dark">"@ViewBag.Correo"</strong>, Por Favor Verificar.  
+              <a href="https://mail.google.com" class="text-info text-link font-weight-bold h7">Email!</a>
+        </div>
+
+        }
+
+
+
+
+    </body>

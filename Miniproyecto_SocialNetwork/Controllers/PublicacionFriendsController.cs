@@ -73,7 +73,7 @@ namespace Miniproyecto_SocialNetwork.Controllers
         //}
 
 
-        public async Task<IActionResult> AddFriends(int? id)
+        public IActionResult AddFriends(int? id)
         {
 
             AgregarUsuarioViewModels po = new AgregarUsuarioViewModels();

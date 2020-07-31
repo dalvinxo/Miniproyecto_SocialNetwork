@@ -10,6 +10,7 @@ using AutoMapper;
 using ViewModels;
 using Email;
 using Microsoft.AspNetCore.Identity;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace Miniproyecto_SocialNetwork.Controllers
 {
@@ -47,10 +48,20 @@ namespace Miniproyecto_SocialNetwork.Controllers
 
             if (ModelState.IsValid) {
 
+               
                 var verificacion = await _tablaUsuarioRepository.VerifyUserIdentiy(VerifyUser);
 
                 if (verificacion)
                 {
+                   var estado = await _tablaUsuarioRepository.VerificarUsuarioEstado(VerifyUser.NombreUsuario);
+
+                    if (estado.Estado == "Inactivo")
+                    {
+                        await _signInManager.SignOutAsync();
+                        return RedirectToAction("VerificarGmail", "Advertencia", new { NameUsuario = VerifyUser.NombreUsuario });
+
+                    }
+
                     return RedirectToAction("Home", "PublicacionUsuario");
                 }
 
@@ -69,6 +80,16 @@ namespace Miniproyecto_SocialNetwork.Controllers
 
             return RedirectToAction("Login", "Account");
         }
+
+
+        public async Task<ActionResult> ConfirmAccount(int? Id)
+        {
+
+            await _tablaUsuarioRepository.ActualizarEstado(Id.Value);
+            return RedirectToAction("Login", "Account");
+        }
+
+
 
 
 

@@ -126,45 +126,37 @@ namespace Repository.Repository
 
         }
 
-        //public async Task<List<ComentarioPlantilla>> TraerComentariosAmigos(int id)
-        //{
 
-        //    var comentarios = await _tablaComentarioRepository.GetAllAsync();
+        public async Task ActualizarEstado(int id) {
 
-        //    var Listado = new List<ComentarioPlantilla>();
+            var usuario = await GetByIdAsync(id);
 
-        //    foreach (var idAmigo in Amigos)
-        //    {
-               
+            if (usuario.Estado == "Inactivo") {
 
-        //        foreach(var comentario in comentarios)
-        //        {
+                usuario.Estado = "Activo";
+                await UpdateExplicito(usuario);
 
-        //            if (idAmigo == comentario.IdUsuario)
-        //            {
-
-        //                var usuario = await GetByIdAsync(idAmigo);
-        //                var final = _mapper.Map<ComentarioPlantilla>(comentario);
-        //                final.Nombre = usuario.Nombre;
-        //                final.Apellido = usuario.Apellido;
-        //                final.FotoPerfil = usuario.FotoPerfil;
-
-        //                Listado.Add(final);
-
-        //            }
+            }
 
 
-        //        }
+        
+        }
 
-        //    }
+        public async Task<TablaUsuario> VerificarUsuarioEstado(string nombre) {
 
+             var usuario = await _context.TablaUsuario.FirstOrDefaultAsync(x => x.NombreUsuario == nombre);
+             return usuario;
+        }
 
-        //    return Listado;
+        public async Task ActualizarClave(TablaUsuario userd, string clave)
+        {
+            userd.Clave = clave;
+            var user = await _userManager.FindByNameAsync(userd.NombreUsuario);
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            await _userManager.ResetPasswordAsync(user, token, clave);
+            await UpdateExplicito(userd);
 
-           
-
-
-        //}
+        }
 
 
     }

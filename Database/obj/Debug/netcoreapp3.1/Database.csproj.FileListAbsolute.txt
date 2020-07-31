@@ -9,4 +9,3 @@ C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Database\bin\Debug
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Database\obj\Debug\netcoreapp3.1\Database.csproj.CoreCompileInputs.cache
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Database\obj\Debug\netcoreapp3.1\Database.dll
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Database\obj\Debug\netcoreapp3.1\Database.pdb
-C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Database\obj\Debug\netcoreapp3.1\Database.csprojAssemblyReference.cache

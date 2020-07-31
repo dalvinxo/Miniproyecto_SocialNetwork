@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Repository.Repository;
 using ViewModels;
 using Email;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Miniproyecto_SocialNetwork.Controllers
 {
@@ -59,8 +60,18 @@ namespace Miniproyecto_SocialNetwork.Controllers
 
                 string uniqueName = null;
 
-                if (NewUser.FotoProfile != null) {
+                if (NewUser.FotoProfile == null)
+                {
+                    ModelState.AddModelError("","Debes subir una foto de perfil.");
+                    return View(NewUser);
 
+
+                }
+
+
+
+                if (NewUser.FotoProfile != null) {
+                        
                     var FolderPath = Path.Combine(hostingEnvironment.WebRootPath, "images/fotoPerfil");
 
                     uniqueName = Guid.NewGuid().ToString() + "name" + NewUser.FotoProfile.FileName;
@@ -82,15 +93,16 @@ namespace Miniproyecto_SocialNetwork.Controllers
                 await _reposUsuario.AddAsync(Usuario);
                 await _reposUsuario.AddUserIdentity(Usuario);
 
+                //var message = new Message(new string[] { suario.Correo }, "Seguridad - Social Network 2", "Saludos usuario: " + usuario.NombreUsuario + ", Esta es su nueva contraseña: " + clave + ". ");
 
 
-
-                var message = new Message(new string[]{Usuario.Correo},"Seguridad","Saludos usuario: "+Usuario.NombreUsuario+", por favor entrar a este link: http://1231 para activar su cuenta");
-
+                var message = new Message(new string[]{Usuario.Correo},"Seguridad Social Network 2","Saludos usuario: "+Usuario.NombreUsuario+ ", por favor entrar a este link: http://localhost:50311/Account/ConfirmAccount/"+Usuario.IdUsuario+". para activar su cuenta.");
                 await _emailSender.SendMailAsync(message);
 
-                return RedirectToAction("Login", "Account");
-            }
+
+                return RedirectToAction("VerificarEstadoCuenta","Advertencia", new { NameUsuario = Usuario.NombreUsuario});
+
+             }
 
 
 

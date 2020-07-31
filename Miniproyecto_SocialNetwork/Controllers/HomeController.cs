@@ -20,11 +20,21 @@ namespace Miniproyecto_SocialNetwork.Controllers
 
         public IActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Home", "PublicacionUsuario");
+            }
+
             return View();
         }
 
         public IActionResult Privacy()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Home", "PublicacionUsuario");
+            }
+
             return View();
         }
 

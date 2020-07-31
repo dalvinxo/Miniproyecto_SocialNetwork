@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "seguridad";
+    Layout = "~/Views/Shared/_LayoutAdvertencia.cshtml";
+}
+
+<body id="login-body">
+
+
+    <div class="alert alert-warning alert - dismissible fade show" role="alert" style="padding-left:10px; margin:10px; font-size:20px;">
+        <h4 class="alert-heading">Seguridad Estado de la cuenta: </h4>
+        <hr /><h5>El usuario <strong class="text-dark">"@ViewBag.Name"</strong> Esta inactivo, Para ser activado debes seguir el enclace que te hemos enviado al correo. (Presionar si quieres volver al login: <a asp-action="Login" asp-controller="Account" class="btn btn-primary btn-sm">Login</a>)</h5>
+        <hr>
+        <p class="mb-0 text-dark">Presioname para activar cuenta: <a href="https://mail.google.com" class="text-info text-link">Aquí!</a> </p>
+    </div>
+
+
+</body>

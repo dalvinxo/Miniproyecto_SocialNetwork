@@ -207,11 +207,6 @@ namespace Miniproyecto_SocialNetwork.Controllers
 
         public async Task<IActionResult> DeletePb(int? id) {
 
-            if (id.Value == null)
-            {
-                return NotFound();
-            }
-
             var publicacion = await _tablaPublicacionRepository.GetPublicacionEdit(id.Value);
 
             if (publicacion == null)

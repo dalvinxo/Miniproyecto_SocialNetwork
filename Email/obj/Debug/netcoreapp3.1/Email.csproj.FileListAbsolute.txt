@@ -6,4 +6,3 @@ C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Email\obj\Debug\ne
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Email\obj\Debug\netcoreapp3.1\Email.csproj.CoreCompileInputs.cache
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Email\obj\Debug\netcoreapp3.1\Email.dll
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Email\obj\Debug\netcoreapp3.1\Email.pdb
-C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\Email\obj\Debug\netcoreapp3.1\Email.csprojAssemblyReference.cache
