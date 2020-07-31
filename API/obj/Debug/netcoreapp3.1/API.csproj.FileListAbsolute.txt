@@ -52,3 +52,8 @@ C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\API\obj\Debug\netc
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\API\obj\Debug\netcoreapp3.1\API.genruntimeconfig.cache
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\API\obj\Debug\netcoreapp3.1\API.csproj.CoreCompileInputs.cache
 C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\API\obj\Debug\netcoreapp3.1\API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\API\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Pablo Molina\source\repos\Miniproyecto_SocialNetwork\API\obj\Debug\netcoreapp3.1\API.MvcApplicationPartsAssemblyInfo.cs

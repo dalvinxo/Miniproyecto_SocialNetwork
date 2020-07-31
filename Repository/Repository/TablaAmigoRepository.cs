@@ -38,6 +38,15 @@ namespace Repository.Repository
                 var NuevosAmigos = new AmigoViewModels();
                 NuevosAmigos.FriendsIdUsuario = amigo.IdUsuario;
                 NuevosAmigos.UserIdUsuario = ok.UserIdUsuario;
+
+                var exists = await _context.TablaAmigo.FirstOrDefaultAsync(op => op.UserIdUsuario == NuevosAmigos.UserIdUsuario && op.FriendsIdUsuario == NuevosAmigos.FriendsIdUsuario);
+
+                if (exists != null)
+                {
+
+                    return true;
+                }
+
                 var Full = _mapper.Map<TablaAmigo>(NuevosAmigos);
                 await AddAsync(Full);
 

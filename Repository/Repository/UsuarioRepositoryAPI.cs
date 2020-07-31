@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Repository.Repository
@@ -136,6 +137,103 @@ namespace Repository.Repository
             }
 
         }
+
+
+        //Publicacion con mas comentario
+        public async Task<GetPublicacionDTO> MoreComent(string name) {
+
+            var UserEspecific = await _tablaUsuarioRepository.ReturnUsuario(name);
+
+            if (UserEspecific == null)
+            {
+                return null;
+            }
+
+            return await GetMorePublicacionDTO(UserEspecific.IdUsuario);
+        }
+
+
+        //Logica Publicacion
+        public async Task<GetPublicacionDTO> GetMorePublicacionDTO(int IdUsuario)
+        {
+
+            //traer todas las publicacion
+            var Publicaciones = await _context.TablaPublicaciones.Where(ok => ok.IdUsuario == IdUsuario).ToListAsync();
+            
+            //instancia publicacion 
+            var publicacionEvaluar = new GetPublicacionDTO();
+
+            var ComentarioEvaluar = new List<GetComentariosDTO>();
+
+            int post = 0;
+            int cont = 0;
+            var publicacionM = new GetPublicacionDTO();
+            foreach (var publicacion in Publicaciones)
+            {
+               
+                var ListComentariosDTO = await GetComentariosDTO(publicacion.IdPublicacion);
+                post = ListComentariosDTO.Count();
+
+
+                if (cont < post) {
+
+                    cont = post;
+                    publicacionM.IdPublicacion = publicacion.IdPublicacion;
+                }
+
+
+            }
+
+           var publicacionPlus = await _context.TablaPublicaciones.FirstOrDefaultAsync(x => x.IdPublicacion == publicacionM.IdPublicacion);
+            var getPublicacionDTO = _mapper.Map<GetPublicacionDTO>(publicacionPlus);
+            getPublicacionDTO.ListComentariosDTO = await GetComentariosDTO(publicacionM.IdPublicacion);
+            return getPublicacionDTO;
+
+        }
+
+
+        //AgregarAmigos
+        public async Task<bool> AddAmigoDTO(string UsuarioIdUser, string clave, string FriendsIdUser) {
+
+            try { 
+            var verify = await _context.TablaUsuario.FirstOrDefaultAsync(x => x.NombreUsuario == UsuarioIdUser && x.Clave == clave);
+            var Friends = await _context.TablaUsuario.FirstOrDefaultAsync(x => x.NombreUsuario == FriendsIdUser);
+            if (verify == null)
+            {
+
+                return false;
+
+            }
+
+            if (Friends== null) {
+                return false;
+            }
+
+            int IdUsuarioUser = await _tablaUsuarioRepository.ReturnIdUsuarioLogueado(UsuarioIdUser);
+
+            var Tad = new TablaAmigo();
+            Tad.FriendsIdUsuario = Friends.IdUsuario;
+            Tad.UserIdUsuario = IdUsuarioUser;
+
+            var exists = await _context.TablaAmigo.FirstOrDefaultAsync(op => op.UserIdUsuario == Tad.UserIdUsuario && op.FriendsIdUsuario == Tad.FriendsIdUsuario);
+
+            if (exists != null) {
+
+                return true;
+            }
+
+            await _tablaAmigoRepository.AddAsync(Tad);
+
+            return true;
+
+            }
+            catch {
+                return false;
+            }
+
+        }
+
+
 
 
         //Metodo lista de publicaciones

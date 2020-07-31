@@ -84,12 +84,12 @@ namespace API.Controllers
 
                 return Usuario;
 
-        }
+             }
             catch
             {
                 return StatusCode(500);
-    }
-}
+            }
+         }
 
 
 
@@ -119,9 +119,55 @@ namespace API.Controllers
         }
 
 
+        [HttpGet]
+        [Route("PlusComent/{UserName}")]
+        public async Task<ActionResult<GetPublicacionDTO>> PlusComent(string UserName)
+        {
+            try
+            {
+                var Usuario = await _usuarioRepositoryAPI.MoreComent(UserName);
+
+                if (Usuario == null)
+                {
+                    return NotFound();
+                }
+
+                return Usuario;
+
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+        }
 
 
+        [HttpPost]
+        [Route("Agregar/{Friends}")]
+        public async Task<ActionResult> PostAmigo(string Friends,string Usuario, string Clave)
+        {
 
+            if (ModelState.IsValid)
+            {
+
+
+                var action = await _usuarioRepositoryAPI.AddAmigoDTO(Usuario,Clave,Friends);
+
+                if (action)
+                {
+                    return NoContent();
+                }
+                else
+                {
+                    return StatusCode(500);
+
+                }
+
+
+            }
+            return BadRequest();
+
+        }
 
 
 
