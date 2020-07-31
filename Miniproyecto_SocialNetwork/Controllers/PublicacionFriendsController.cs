@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Database.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -101,7 +102,65 @@ namespace Miniproyecto_SocialNetwork.Controllers
                 return View(ok);
             }
 
+        [HttpPost]
+        public async Task<IActionResult> ComentariosFriends(string comentar, int idpublicacion)
+        {
 
+            if (comentar != null)
+            {
+                TablaComentariosViewModels coment = new TablaComentariosViewModels();
+                ViewBag.Comenta = "";
+                coment.UserComentario = comentar;
+                coment.IdPublicacion = idpublicacion;
+                coment.IdUsuario = await IdUsuarioClienteAsync();
+                var comentariO = _mapper.Map<TablaComentarios>(coment);
+                await _tablaComentarioRepository.AddAsync(comentariO);
+                return RedirectToAction("HomeFriends", "PublicacionFriends");
+            }
+            else
+            {
+                ViewBag.Comenta = "No puedes enviar comentarios vacios...";
+                return RedirectToAction("HomeFriends", "PublicacionFriends");
+
+            }
 
         }
+
+        [HttpPost]
+        public async Task<IActionResult> SubComentarFriends(string comentar, int IdComentario)
+        {
+
+            if (comentar != null)
+            {
+                SubComentariosViewModels coment = new SubComentariosViewModels();
+                ViewBag.Comentare = "";
+                coment.UserComentario = comentar;
+                coment.IdComentario = IdComentario;
+                coment.IdUsuario = await IdUsuarioClienteAsync();
+                var subComentar = _mapper.Map<SubTablaComentarios>(coment);
+                await _subTablaComentarioRepository.AddAsync(subComentar);
+                return RedirectToAction("HomeFriends", "PublicacionFriends");
+            }
+            else
+            {
+                ViewBag.Comentare = "No puedes enviar respuestas vacios...";
+                return RedirectToAction("HomeFriends", "PublicacionFriends");
+            }
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EliminarAmigo(int IdUsuario, int IdAmigo) {
+
+
+            var Full = new TablaAmigo();
+            Full.UserIdUsuario = IdUsuario;
+            Full.FriendsIdUsuario = IdAmigo;
+
+            await _tablaAmigoRepository.DeleteEntity(Full);
+            return RedirectToAction("HomeFriends", "PublicacionFriends");
+        }
+
+
+    }
 }

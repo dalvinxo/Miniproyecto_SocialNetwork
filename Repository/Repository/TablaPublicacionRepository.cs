@@ -244,8 +244,7 @@ namespace Repository.Repository
 
         public async Task<bool> EliminarPublicacionAll(int IdPublicacion) {
 
-
-            if (IdPublicacion != null)
+            try
             {
                 var ListadocomentarioPublicacion = await _context.TablaComentarios.Where(op => op.IdPublicacion == IdPublicacion).ToListAsync();
 
@@ -266,17 +265,48 @@ namespace Repository.Repository
 
                 var PublicacionABorrar = await GetByIdAsync(IdPublicacion);
 
+                //  Eliminando Imagen  
+                var FolderPath = Path.Combine(hostingEnvironment.WebRootPath, "images/fotoPublicacion");
+                if (!string.IsNullOrEmpty(PublicacionABorrar.FotoPublicacion))
+                {
+
+                    var FilePathDelete = Path.Combine(FolderPath, PublicacionABorrar.FotoPublicacion);
+
+                    if (System.IO.File.Exists(FilePathDelete))
+                    {
+
+                        var FileInfo = new System.IO.FileInfo(FilePathDelete);
+                        FileInfo.Delete();
+
+                    }
+
+                }
+
+
+              
+
+
                 await DeleteEntity(PublicacionABorrar);
 
 
                 return true;
+
+            }catch{
+
+                return false;
             }
 
-            return false;
 
         }
 
+        //public void Borrar(string path)
+        //{
+        //    File.SetAttributes(path, FileAttributes.Normal);
+        //    System.GC.Collect();
+        //    System.GC.WaitForPendingFinalizers();
 
+        //    File.Delete(path);
+        //}
 
 
 

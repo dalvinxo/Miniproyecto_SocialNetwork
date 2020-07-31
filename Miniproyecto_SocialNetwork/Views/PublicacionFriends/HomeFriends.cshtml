@@ -43,9 +43,9 @@
                                 <td>@Us.Apellido</td>
                                 <td>@Us.NombreUsuario</td>
                                 <td>
-                                    <form asp-action="EliminarAmigo" method="post" class="needs-validation" novalidate>
-                                        <input type="hidden" name="IdAmigo" value="@Us.IdUsuario" />
-                                        <input type="hidden" name="IdUsuario" value="@Model.UsuarioLogueado.IdUsuario"  />
+                                    <form asp-action="EliminarAmigo" asp-controller="PublicacionFriends" method="post" class="needs-validation" novalidate>
+                                        <input type="hidden" name="IdUsuario" value="@Model.UsuarioLogueado.IdUsuario" />
+                                        <input type="hidden" name="IdAmigo" value="@Us.IdUsuario"  />
                                         <input type="submit" class="btn btn-outline-danger" value="Eliminar" />
                                     </form>
                                 </td>
@@ -136,7 +136,7 @@
                                                 <div class="collapse" id="collapsubcomentarios_@comentariosPublicacion.IdComentario">
 
                                                     <div class="card-footer bg-transparent border-info align-items-center">
-                                                        <form asp-action="SubComentar" asp-controller="PublicacionUsuario" method="post">
+                                                        <form asp-action="SubComentarFriends" asp-controller="PublicacionFriends" method="post">
                                                             <div class="form-group row">
                                                                 <div class="col-sm-10">
                                                                     <input type="hidden" name="IdComentario" value="@comentariosPublicacion.IdComentario" />
@@ -162,7 +162,7 @@
                                 }
                             }
                             <div class="card-footer bg-transparent border-info align-items-center">
-                                <form asp-action="Comentarios" asp-controller="PublicacionUsuario" method="post">
+                                <form asp-action="ComentariosFriends" asp-controller="PublicacionFriends" method="post">
                                     <div class="form-group row">
                                         <div class="col-sm-10">
                                             <input type="hidden" name="idpublicacion" value="@mypublicaciones.IdPublicacion" />

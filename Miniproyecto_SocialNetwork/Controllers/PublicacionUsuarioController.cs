@@ -158,11 +158,7 @@ namespace Miniproyecto_SocialNetwork.Controllers
         ///// Ediccion de las publicaciones
         public async Task<IActionResult> EditPb(int? id) {
 
-            if (id.Value == null)
-            {
-                return NotFound();
-            }
-
+         
             var publicacion = await _tablaPublicacionRepository.GetPublicacionEdit(id.Value);
 
             if (publicacion == null)
@@ -233,24 +229,15 @@ namespace Miniproyecto_SocialNetwork.Controllers
         public async Task<IActionResult> DeletePb(int IdPublicacion)
         {
 
-            if (IdPublicacion == null)
-            {
-                return NotFound();
-            }
-
-
+            
             var publicacion = await _tablaPublicacionRepository.EliminarPublicacionAll(IdPublicacion);
 
             if (publicacion) {
-                return RedirectToAction("Home");
+                return RedirectToAction("Home", "PublicacionUsuario");
             }
 
 
             return NotFound();
-
-
-
-
 
         }
 
